@@ -186,6 +186,7 @@ sudo chmod +x /bin/rpi-wifi.sh
  [Install]
  WantedBy=multi-user.target
  EOF
+ 
  sudo systemctl daemon-reload
  sudo systemctl enable rpi-wifi.service
 
