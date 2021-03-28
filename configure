@@ -190,7 +190,8 @@ EOF
  sudo systemctl daemon-reload
  sudo systemctl enable rpi-wifi.service
 
-# Configure cron job
+#decrecated -- use systemd
+#Configure cron job
 #crontab -l | { cat; echo "@reboot /bin/rpi-wifi.sh"; } | crontab -
 
 # Finish
