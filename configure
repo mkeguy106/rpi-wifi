@@ -181,7 +181,6 @@ sudo chmod +x /bin/rpi-wifi.sh
 
  [Service]
  ExecStart=/bin/bash -c 'rpi-wifi.sh'
- User=root
 
  [Install]
  WantedBy=multi-user.target
