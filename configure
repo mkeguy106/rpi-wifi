@@ -80,7 +80,7 @@ MAC_ADDRESS="$(cat /sys/class/net/wlan0/address)"
 # Install dependencies
 sudo apt -y update
 sudo apt -y upgrade
-sudo apt -y install dnsmasq dhcpcd hostapd cron
+sudo apt -y install dnsmasq dhcpcd hostapd cron usbmuxd
 
 # Populate `/etc/udev/rules.d/70-persistent-net.rules`
 sudo bash -c 'cat > /etc/udev/rules.d/70-persistent-net.rules' << EOF
@@ -144,6 +144,11 @@ source-directory /etc/network/interfaces.d
 auto lo
 auto ap0
 auto wlan0
+#onbard nic
+auto eth0
+#this will be my tether
+auto eth1
+
 iface lo inet loopback
 
 allow-hotplug ap0
@@ -156,6 +161,11 @@ allow-hotplug wlan0
 iface wlan0 inet manual
     wpa-roam /etc/wpa_supplicant/wpa_supplicant.conf
 iface AP1 inet dhcp
+
+#onbard nic
+iface eth0 inet dhcp
+#this will be my tether
+iface eth1 inet dhcp
 EOF
 
 # Populate `/bin/start_wifi.sh`
